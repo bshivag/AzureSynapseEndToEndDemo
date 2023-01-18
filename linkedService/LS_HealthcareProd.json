@@ -1,0 +1,17 @@
+{
+	"name": "LS_HealthcareProd",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"description": "Connection to Dedicated SQL pool ",
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=healthcareworkspace.sql.azuresynapse.net;initial catalog=HealthCareDW;user id=labsqladmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VAMzhFMEI2NEMtN0Q2Ri00QjZCLUI3QjMtRTBDNzA3OEM3N0RCXzY3YmRkNmMzLWI4NTAtNDE1YS1iMWNhLTZjZTJmOWM0YTIzZiINCn0="
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

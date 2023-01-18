@@ -1,0 +1,17 @@
+{
+	"name": "Cosmos Query",
+	"properties": {
+		"content": {
+			"query": "\nSELECT TOP 100 *\nFROM OPENROWSET(\n    'CosmosDB',\n    'account=cosmosdb-healthcare-2-dev;database=healthcare;region=eastus2;key=RIgzI4SwGQ4K6oBavYA1oFnHxu7bsLt1JiC7exvyoArl1rUj3fkTkf4ZqfZoZyVv9iath0sH4jqQACDb5zRiNQ==',\n    SynapseLinkLabData\n) AS [SynapseLinkLabData]\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "Patient Monitoring",
+	"properties": {
+		"content": {
+			"query": "//What is the average temperature every 1 min?\nmonitoringdata\n| where EnqueuedTimeUTC > ago(7d)\n| where DeviceId == 'TH005'\n| summarize avg(bodyTemperature) by bin(EnqueuedTimeUTC,1m)\n| render timechart \n\n//Are there any anomalies for this device?\nmonitoringdata\n| where EnqueuedTimeUTC > ago(3h)\n| where DeviceId == 'TH005'\n| make-series AvgTemp=avg(bodyTemperature) default=real(null) on EnqueuedTimeUTC from ago(3h) to now() step 1m   \n| extend NoGapsTemp=series_fill_linear(AvgTemp)\n| project EnqueuedTimeUTC, NoGapsTemp\n| extend anomalies = series_decompose_anomalies(NoGapsTemp,1) \n| render anomalychart with(anomalycolumns=anomalies)\n",
+			"metadata": {
+				"language": "kql"
+			},
+			"currentConnection": {
+				"poolName": "adxhealthcaredev",
+				"databaseName": "healthcaredb"
+			}
+		},
+		"type": "KqlQuery"
+	}
+}
